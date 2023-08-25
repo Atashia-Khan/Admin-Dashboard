@@ -26,17 +26,16 @@
           <td class="table-items">{{ item.email }}</td>
           <td class="more-user-details">
             <!-- Button trigger modal -->
-            <button type="button" class="btn modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn modal-btn" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + index">
               Open
             </button>
-
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" :id="'exampleModal' + index" tabindex="-1" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">More user details</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ item.name }}'s more details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
@@ -103,17 +102,17 @@ td {
 }
 
 
-.more-user-details>button {
-  background-color: #c6dbfa;
-  color: #081932;
-  font-weight: bold;
-  border: none;
-  border-radius: 15px;
-  height: 2rem;
+.modal-btn {
+  background-color: #c6dbfa !important;
+  color: #081932 !important;
+  font-weight: bold !important;
+  border: none !important;
+  border-radius: 15px !important;
+  height: 2rem !important;
 }
 
-.more-user-details>button:hover {
-  cursor: pointer;
+.modal-btn:hover {
+  cursor: pointer ;
   color: #0b2854;
   background-color: #aacaf9;
   box-shadow: 0 0 0.4rem 0.0625rem #e3e3e3;
@@ -131,6 +130,15 @@ td {
 .modal-body {
   text-align: left;
 }
+.btn-danger:hover{
+  background-color: rgb(234, 77, 77);
+  box-shadow: 0 0 0.4rem 0.0625rem #e3e3e3;
+}
+.btn-danger:first-child:active{
+  color: white !important; 
+  background-color: rgb(234, 77, 77) !important;
+  box-shadow: 0 0 0.4rem 0.0625rem #e3e3e3 !important;
+}
 
 @media screen and (max-width: 770px) {
   .table-header {
@@ -145,4 +153,5 @@ td {
   .table> :not(caption)>*>* {
     padding: 0.5rem 0.2rem !important;
   }
-}</style>
+}
+</style>

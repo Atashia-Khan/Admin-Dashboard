@@ -5,20 +5,20 @@
         <h2 class="student-header">Admin Page</h2>
         <div class="navbar-collapse">
           <!-- filter by approved / disapproved -->
-          <select class="order-by form-select me-2" v-model.lazy="filterBy" @change="filterStatus()" required>
-            <option id="select-education" disabled selected value="">Filter By</option>
+          <select class="filter-by form-select me-2" v-model.lazy="filterBy" @change="filterStatus()" required>
+            <option id="select-education" disabled selected value="">Filter</option>
             <option value="true">Approved</option>
             <option value="false">Disapproved</option>
           </select>
           <!-- order by ascending / descending -->
           <select class="order-by form-select me-2" v-model.lazy="orderBy" @change="orderItemsBy()" required>
-            <option id="select-education" disabled selected value="">Order By</option>
+            <option id="select-education" disabled selected value="">Order</option>
             <option value="ASC">Ascending</option>
             <option value="DESC">Descending</option>
           </select>
           <form class="d-flex">
-            <input class="form-control search-input" type="search" v-model.lazy="searchData"
-              placeholder="Search  for students..." @click="searchItem()">
+            <input class="form-control search-input" type="search" v-model.lazy="searchData" placeholder="Search..."
+              @click="searchItem()">
             <button class="btn btn-outline-info search-button ms-1" type="submit">
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -82,7 +82,7 @@
           <td class="table-items">
             <label class="switch">
               <div v-if="item.approved === true">
-                <input type="checkbox" @click="changeStatus(item, 0)">
+                <input type="checkbox" @click="changeStatus(item, 0)" checked>
                 <span :class="{ 'slider': true, 'green-slider slider round': item.approved === true }"></span>
               </div>
               <div v-if="item.approved === null">
@@ -300,13 +300,6 @@ export default {
 </script>
 
 <style scoped>
-.user-header-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: context-menu;
-}
-
 .student-header {
   color: #0C134F !important;
   text-align: left !important;
@@ -361,6 +354,10 @@ export default {
   width: 20% !important;
 }
 
+.filter-by {
+  width: 20% !important;
+}
+
 th {
   font-size: 0.9rem;
 }
@@ -374,11 +371,12 @@ td {
 }
 
 /* toggle slider */
+
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 3.5rem;
+  height: 1.6rem;
 }
 
 .switch input {
@@ -400,12 +398,12 @@ td {
 }
 
 .slider:before {
-  content: "";
   position: absolute;
-  height: 26px;
-  width: 26px;
+  content: "";
+  height: 1.2rem;
+  width: 1.2rem;
   left: 4px;
-  bottom: 4px;
+  bottom: 0.2rem;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
@@ -419,14 +417,8 @@ td {
   background-color: #FF6969;
 }
 
-.green-slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
 .slider.round {
-  border-radius: 34px;
+  border-radius: 12rem;
 }
 
 .slider.round:before {
@@ -434,9 +426,9 @@ td {
 }
 
 input:checked+.slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(1.4rem);
+  -ms-transform: translateX(1.4rem);
+  transform: translateX(1.8rem);
 }
 
 /* pagination */
@@ -458,12 +450,6 @@ input:checked+.slider:before {
   border-radius: 5px;
 }
 
-/* .pagination a:link {
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
-} */
-
 .pagination a:hover {
   background-color: #ddd;
   border-radius: 5px;
@@ -471,57 +457,85 @@ input:checked+.slider:before {
 
 /* media queries */
 @media screen and (max-width: 770px) {
-  #search-input {
-    width: 5rem;
+
+  /* navbar items flex */
+  .navbar-collapse {
+    justify-content: space-between;
   }
 
-  #order-by {
-    width: 5rem;
+  .student-header {
+    font-size: 1rem;
   }
 
+  /* search input field and button */
+  .search-input {
+    font-size: 0.8rem;
+    width: 30%;
+    padding: 0.3rem !important;
+  }
+
+  .search-button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  /* filter by and order by dropdown buttons */
+  .order-by {
+    font-size: 0.7rem;
+    width: 17% !important;
+    margin-right: 0.2rem !important;
+    padding: 0.3rem !important;
+  }
+
+  .filter-by {
+    font-size: 0.7rem;
+    width: 17% !important;
+    margin-right: 0.2rem !important;
+    padding: 0.3rem !important;
+
+  }
+
+  /* table header font size */
   thead>tr th {
     font-size: 0.6rem;
   }
 
+  /* table body items font size */
   .table-items {
-    font-size: 0.3rem;
+    font-size: 0.4rem;
   }
 
+  /* download button */
   .download-btn {
     font-size: 0.8rem;
   }
 
-  #search-input {
-    width: 7rem !important;
+  /* pagination */
+  .pagination a {
+    font-size: 0.8rem;
+    padding: 0.7rem 0.5rem;
   }
 
-  .form-control {
-    float: right;
-    width: 2rem !important;
+  .pagination>div {
+    padding: 0.7rem 0.5rem;
   }
 
-  .form-select {
-    float: right;
-    margin-block-end: 0rem;
-    /* width: 2rem !important; */
+  /* switch toggle button */
+  .switch {
+    width: 2rem;
+    height: 1rem;
   }
 
-  .navbar-collapse {
-    /* display: block; */
-    /* justify-content: ; */
+  input:checked+.slider:before {
+    -webkit-transform: translateX(1rem);
+    -ms-transform: translateX(1rem);
+    transform: translateX(1rem);
   }
 
-  .d-flex {
-    display: block !important;
-    /* flex: none; */
+  .slider:before {
+    height: 0.7rem;
+    width: 0.7rem;
+    left: 2px;
+    bottom: 0.15rem;
   }
-
-  /* .switch {
-    width: 30px;
-    height: 15px;
-  }
-  .slider:before{
-    height: 13px;
-    width: 10px;
-  } */
 }</style>
