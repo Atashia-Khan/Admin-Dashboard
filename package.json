@@ -1,0 +1,35 @@
+{
+  "name": "atashia-project-1",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.2",
+    "axios": "^1.4.0",
+    "bootstrap": "^5.3.1",
+    "bootstrap-vue": "^2.23.1",
+    "socket.io-client": "^4.7.2",
+    "vue": "^2.6.14",
+    "vue-axios": "^3.5.2",
+    "vue-loaders": "^4.1.4",
+    "vue-router": "^3.5.1",
+    "vue-spinner": "^1.0.4",
+    "vue-spinners-css": "^1.1.5",
+    "vuex": "^3.6.2",
+    "vuex-persistedstate": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
